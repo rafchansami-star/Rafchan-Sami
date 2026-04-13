@@ -5,26 +5,19 @@ import { Calendar, GraduationCap, Briefcase } from 'lucide-react';
 
 const timeline = [
   {
-    year: '2024 - Present',
+    year: '2026 - Present',
     title: 'Class 8 Student',
-    company: 'High School',
+    company: 'Cumilla Modern High School',
     icon: GraduationCap,
-    description: 'Currently pursuing my secondary education while balancing academic studies with advanced web development learning.'
+    description: 'Runining'
   },
   {
-    year: '2023 - Present',
+    year: '2024 - Present',
     title: 'Self-Taught Developer',
     company: 'Online Learning',
     icon: Briefcase,
     description: 'Mastering HTML, CSS, and JavaScript. Building real-world projects and exploring modern frameworks like React.'
   },
-  {
-    year: '2018 - 2023',
-    title: 'Primary Education',
-    company: 'Primary School',
-    icon: GraduationCap,
-    description: 'Completed primary schooling with a strong interest in computer science and digital creativity.'
-  }
 ];
 
 export default function About() {
