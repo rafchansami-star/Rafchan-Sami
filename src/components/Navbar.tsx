@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Mail, Linkedin } from 'lucide-react';
+import { Menu, X, Github, Mail, Linkedin, Download } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
 const navLinks = [
@@ -15,14 +15,35 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null);
+    }
+  };
 
   return (
     <nav
@@ -65,6 +86,15 @@ export default function Navbar() {
           >
             Resume
           </a>
+          {deferredPrompt && (
+            <button
+              onClick={handleInstallClick}
+              className="flex items-center space-x-2 px-5 py-2 bg-neon-blue text-black text-sm font-bold rounded-full hover:shadow-[0_0_15px_rgba(0,245,255,0.6)] transition-all duration-300"
+            >
+              <Download size={16} />
+              <span>Install App</span>
+            </button>
+          )}
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -102,6 +132,15 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+              {deferredPrompt && (
+                <button
+                  onClick={handleInstallClick}
+                  className="flex items-center justify-center space-x-2 px-5 py-3 bg-neon-blue text-black text-lg font-bold rounded-xl transition-all duration-300"
+                >
+                  <Download size={20} />
+                  <span>Install App</span>
+                </button>
+              )}
             </div>
           </motion.div>
         )}
