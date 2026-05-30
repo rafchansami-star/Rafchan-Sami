@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rafchan-sami.onrender.com/sitemap.xml

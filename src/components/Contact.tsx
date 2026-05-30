@@ -41,8 +41,8 @@ export default function Contact() {
           <div className="space-y-6">
             {[
               { icon: Mail, label: 'Email', value: 'rafchansami@gmail.com', href: 'mailto:rafchansami@gmail.com' },
-              { icon: Phone, label: 'Phone', value: '+01634680632', href: 'tel:+01634680632' },
-              { icon: MapPin, label: 'Location', value: 'Bangladesh, Cumilla', href: '#' }
+              { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567', href: 'tel:+15551234567' },
+              { icon: MapPin, label: 'Location', value: 'San Francisco, CA', href: '#' }
             ].map((item, i) => (
               <div key={i} className="flex items-center group">
                 <div className="p-4 glass rounded-2xl text-neon-blue group-hover:shadow-[0_0_15px_rgba(0,245,255,0.4)] transition-all duration-300 mr-6">
