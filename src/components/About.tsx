@@ -7,7 +7,7 @@ const timeline = [
   {
     year: '2024 - Present',
     title: 'Class 8 Student',
-    company: 'High School',
+    company: 'Cumilla Modern High School',
     icon: GraduationCap,
     description: 'Currently pursuing my secondary education while balancing academic studies with advanced web development learning.'
   },
@@ -21,7 +21,7 @@ const timeline = [
   {
     year: '2018 - 2023',
     title: 'Primary Education',
-    company: 'Primary School',
+    company: 'Cumilla Modern School (Primary)',
     icon: GraduationCap,
     description: 'Completed primary schooling with a strong interest in computer science and digital creativity.'
   }
